@@ -1,0 +1,397 @@
+.img_wrapper{
+    position: relative;
+    padding-top: 75%;
+    overflow: hidden;
+}
+ 
+.img_wrapper img{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+ 
+    -webkit-transition: opacity 150ms;
+    -moz-transition: opacity 150ms;
+    -ms-transition: opacity 150ms;
+    transition: opacity 150ms;
+}
+.img_wrapper.loaded img{
+    opacity: 1;
+}
+.img_wrapper.loaded .css_spinner{
+    display: none;
+}
+
+/*
+* CSS loading spinner styles for second example.
+* You could also use a background image .gif 
+* on the img_wrapper, or any rotating element.
+*/
+
+.css_spinner{
+	position: absolute;
+	width: 48px;
+	height: 48px;
+	left: 50%;
+	top: 50%;
+	margin: -24px 0 0 -24px;
+	opacity: .3;
+	
+	-webkit-border-radius: 999px;
+	-moz-border-radius: 999px;
+	border-radius: 999px;
+}
+
+.css_spinner .half{
+	position: absolute;
+	width: 24px;
+	height: 48px;
+	top: 0;
+	overflow: hidden;
+}
+
+.css_spinner .left{
+	left: 0px;
+	
+	-webkit-border-radius: 999px 0 0 999px;
+	-moz-border-radius: 999px 0 0 999px;
+	border-radius: 999px 0 0 999px;
+}
+
+.css_spinner .right{
+	left: 24px;
+	
+	-webkit-border-radius: 0 999px 999px 0;
+	-moz-border-radius: 0 999px 999px 0;
+	border-radius: 0 999px 999px 0;
+}
+
+.css_spinner .band{
+	position: absolute;
+	width: 24px;
+	height: 48px;
+	background: #922d8d;
+	
+	-webkit-border-radius: 999px;
+	-moz-border-radius: 999px;
+	border-radius: 999px;
+	
+	-webkit-animation: cssSpinnerRight 1s infinite linear;
+	-moz-animation: cssSpinnerRight 1s infinite linear;
+}
+
+.css_spinner .left .band{
+	left: 0;
+	border-left: 24px solid #fafafa;
+
+	-webkit-animation: cssSpinnerLeft 1s infinite linear;
+	-moz-animation: cssSpinnerLeft 1s infinite linear;
+}
+
+.css_spinner .right .band{
+	right: 0;
+	border-right: 24px solid #fafafa;
+}
+
+@-webkit-keyframes cssSpinnerLeft{
+  0%{-webkit-transform:rotate(0deg)}
+  25%{-webkit-transform:rotate(0deg)}
+  50%{-webkit-transform:rotate(180deg)}
+  75%{-webkit-transform:rotate(180deg)}
+  100%{-webkit-transform:rotate(360deg)}
+}
+
+@-webkit-keyframes cssSpinnerRight{
+  0%{-webkit-transform:rotate(0deg)}
+  25%{-webkit-transform:rotate(180deg)}
+  50%{-webkit-transform:rotate(180deg)}
+  75%{-webkit-transform:rotate(360deg)}
+  100%{-webkit-transform:rotate(360deg)}
+}
+
+@-moz-keyframes cssSpinnerLeft{
+  0%{-moz-transform:rotate(0deg)}
+  25%{-moz-transform:rotate(0deg)}
+  50%{-moz-transform:rotate(180deg)}
+  75%{-moz-transform:rotate(180deg)}
+  100%{-moz-transform:rotate(360deg)}
+}
+
+@-moz-keyframes cssSpinnerRight{
+  0%{-moz-transform:rotate(0deg)}
+  25%{-moz-transform:rotate(180deg)}
+  50%{-moz-transform:rotate(180deg)}
+  75%{-moz-transform:rotate(360deg)}
+  100%{-moz-transform:rotate(360deg)}
+}
+
+#upload-box {
+    cursor: pointer;
+	position: relative;
+	text-align: center;
+	background: #fff;
+	/* border: #e5e5e5 1px solid; */
+	height: 150px;
+}
+#upload-box h2 {
+	margin-top: 1%;
+}
+.file-input {
+	position: absolute;
+	top:0;
+	left:0;
+	z-index: 10;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	outline: none;
+	opacity: 0;
+    cursor: pointer;
+}
+.photo-add {
+	display: inline-block;
+	border: #e5e5e5 2px dashed;
+	border-radius: 6px;
+	/*margin-top: 0%;*/
+	padding: 35px;
+	transition: all ease 0.5s;
+}
+#upload-box:hover .photo-add, #upload-box.dragover .photo-add {
+	border: #00b0bc 2px dashed;
+	transition: none;
+}
+
+.figs {
+	position: relative;
+}
+.figs > div {
+	margin-bottom: 30px;
+}
+
+/* Делаем чекбокс особенным*/
+.figs > div > input[type=checkbox] {
+	position: absolute;
+	cursor: pointer;
+	width: 5%;
+	height: 5%;
+	margin: 0;
+	padding: 0;
+	/*opacity: 0;*/
+}
+
+.figs > div > div.fig {
+	border: 1px solid transparent;
+	border-radius: 6px;
+	padding: 6px;
+}
+/* Когда у флажка установлен checked */
+.figs > div > input[type=checkbox]:checked ~ div.fig {
+	/*
+	margin-top: 0;
+	max-height: 0;
+	opacity: 0;*/
+	
+    content: "\2713";
+	background-color: #d6f3ff;
+	border: 1px solid #b3ddff;
+	box-shadow: -18px 0 20px -20px #333, 18px 0 20px -20px #333, 0 -10px 10px -20px #333, 0 10px 10px -20px #333;
+	
+	/*transform: translate(0, 50%);*/
+}
+
+.no-caption {
+	color: #777;
+}
+
+.pr{
+	position: relative;
+}
+#panel {
+	position: absolute;
+	z-index: 100;
+	background-color: white;
+	border: 1px solid #419fd9;
+	box-shadow: -18px 0 20px -20px #333, 18px 0 20px -20px #333, 0 -10px 10px -20px #333, 0 10px 10px -20px #333;
+	width: 100%;
+	height: 100%;
+	left: 0; right: 0; top: 0; bottom: 0;
+	/*display: none; - inline */
+	padding: 16px;
+}
+
+.loading { color: #5b9fce; padding-bottom: 2px; font-size: 15px; line-height:  15px}
+.loadingerror { color: #af5f47; font-size: 91%}
+.rotate { animation-name: rotate; animation-duration: 1s; animation-iteration-count: infinite; animation-timing-function: linear}
+@keyframes rotate { from { transform: rotate(0deg)}to { transform: rotate(360deg)}}
+
+
+
+.my-tooltip{width:18px;height:18px;position:relative;z-index:1;display:inline-block}
+
+.tooltip-handle{display:inline-block;width:18px;height:18px;font-family:sans-serif;font-size:12px;line-height:16px;font-weight:700;text-align:center;background:transparent;cursor:pointer;color:#000;-webkit-transition:.4s;transition:.4s;border:1px solid #000;border-radius:50%}
+.tooltip-handle:hover{background:#000;color:white}
+
+.tooltip-text{display:none;width:500px;padding:15px 30px 15px 15px;background:rgba(0,0,0,.77);color:#fff;font-size:15px;line-height:22px;text-align:left;font-family:sans-serif;position:absolute;/*right:-18px;bottom:calc(100% + 15px)*/}
+
+.tooltip-text-close{width:22px;height:22px;position:absolute;right:10px;top:10px;z-index:1;cursor:pointer}
+.tooltip-text-close:after,.tooltip-text-close:before{content:'';display:block;width:22px;height:2px;background:#fff;position:absolute;left:0;top:0;right:0;bottom:0;margin:auto;-webkit-transform-origin:center center;transform-origin:center center}
+.tooltip-text-close:before{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
+.tooltip-text-close:after{-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+.tooltip-text-close:hover:after,.tooltip-text-close:hover:before{background:#1dabe1}
+
+.tooltip-text ul{list-style:none}
+.tooltip-text ul li{margin:0 0 10px;position:relative}
+.tooltip-text ul li:last-child{margin:0}
+
+.tooltip-title{font-size:15px;line-height:16px}
+.my-tooltip.active .tooltip-text{display:block}
+
+.fig .my-tooltip{width:18px;height:18px;line-height:16px;border-radius:50%;z-index:21}
+.fig .tooltip-text{top:auto;bottom:auto}
+
+
+.tags {margin: 5 0 0 0; }
+
+
+.last_gal {
+	-webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+	}	
+	.last_gal img{ width: 100%; padding: 0px 0;}
+.last_gal @media (max-width: 500px) {
+		 {
+	-webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
+	}
+	}
+	
+.last_gal figure {position:relative}
+.last_gal figure:hover {box-shadow: 0 1px 4px rgba(0, 0, 0, .3), -23px 0 20px -23px rgba(0, 0, 0, .8), 23px 0 20px -23px rgba(0, 0, 0, .8), 0 0 40px rgba(0, 0, 0, .1) inset;}
+.last_gal figure a ~ figcaption {display:none;position:absolute;z-index:10;width:100%;background-color:#F8F9FB;border-radius: 0 0 8px 8px;padding: 0 10px 10px 10px}
+.last_gal figure a:hover ~ figcaption, figure a ~ figcaption:hover {display:block; box-shadow: 0 2px 4px rgba(0, 0, 0, .3), -23px 0 20px -23px rgba(0, 0, 0, .8), 23px 0 20px -23px rgba(0, 0, 0, .8), 0 0 40px rgba(0, 0, 0, .1) inset;}
+.last_gal figure a:hover{
+	background-color:#777;
+    box-shadow: -18px 0 20px -20px #333, 18px 0 20px -20px #333, 0 -10px 10px -20px #333, 0 10px 10px -20px #333;
+}
+
+
+.comment {
+	width: 800px;
+	border: #e5e5e5 1px solid;
+}
+.comment-user {
+	font-weight: bold;
+}
+.comment-date {
+font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.new_comment {
+	height: 160px;
+	width: 600px;
+}
+
+.img-single-page {
+	box-shadow: -18px 0 20px -20px #333, 18px 0 20px -20px #333, 0 -10px 10px -20px #333, 0 10px 10px -20px #333;
+    margin: 8px 0 15px 0;
+}
+
+.normal-link,.normal-link:hover {
+	text-decoration: none; color: #000;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.alert {
+	width: 300px;
+	position: absolute;
+	z-index: 1010;
+	top: 20px;
+	right: 20px;
+	margin-left: auto;
+}
+
+.album-settings {
+	font-size: 35px;
+	color:black;
+}
+
+.img-border {
+	border:2px solid #808080;
+}
+
+.album-description {
+	border-left: 2px solid #e5e5e5;
+	/* border-bottom: 2px dashed #707070;
+	border-right: 2px dashed #707070; */
+	margin: 5px;
+	padding: 5px;
+}
+
+/* modals */
+body.modal-opened{width:100%;height:100%;overflow:hidden}
+.modal{display:none;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;width:100%;height:100vh;overflow:auto;padding:10px;background:rgba(0,0,0,.3);position:absolute;left:0;top:0;z-index:1002}
+.modal-content{display:block;width:100%;max-width:360px;padding:30px 40px 40px;background:#f0f0f0;position:relative}
+.modal h2{font-family:"Uni Neue Book",sans-serif;font-size:27px;line-height:1;text-align:left}
+.modal .close{width:25px;height:25px;margin:0;padding:0;background:0 0;border:none;font-size:0;float:none;opacity:1;cursor:pointer;position:absolute;top:10px;right:10px}
+.modal .close:hover{opacity:.75}
+.modal .close:after,.modal .close:before{content:'';display:block;width:30px;height:2px;background:#a1a1a1;position:absolute;left:-2px;top:0;bottom:0;margin:auto}
+.modal .close:before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+.modal .close:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
+.modal label{display:block;margin:0 0 30px}
+.modal label input,.modal label textarea{display:block;width:100%;height:50px;padding:0 20px;border:1px solid #a7aeb0;background:#fff;line-height:50px}
+.modal label textarea{height:120px;padding:10px 20px;line-height:20px}
+/*
+.modal .btn{font-size:14px}
+@media (min-width:400px){
+	.modal .btn{font-size:17px}
+}*/
+
+.rotate360{animation-name:rotate360; animation-duration:1s; animation-iteration-count:infinite; animation-timing-function:linear;}
+@keyframes rotate360{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+.text-break {
+	word-break: break-all;
+}
+
+.loading_gif { 
+	background-image: url(/static/loading.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #F8F9FB;
+}
+
+.box-shadow2 {
+  width: 80%;
+  max-width: 550px;
+  margin: 10px auto;
+  padding: 1em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3), -23px 0 20px -23px rgba(0, 0, 0, .8), 23px 0 20px -23px rgba(0, 0, 0, .8), 0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.norm_link:hover {
+    color: #0066ff;
+    text-decoration: none;
+}
+
+.small_text {
+    font-family: Lucida Console;
+    font-size: small;
+}
+
+figure {
+	height: 450px;
+	position: relative;
+}
+figcaption {
+	top: 100%;
+}
+a>img {
+	height: 450px;
+}
+a {
+	overflow: hidden;
+}
+
